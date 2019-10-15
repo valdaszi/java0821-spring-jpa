@@ -72,11 +72,12 @@ public class Api {
 
     @DeleteMapping("/{id}")
     ResponseEntity<Integer> delete(@PathVariable int id) {
-        Optional<Student> student = studentRepository.findById(id);
-        if (!student.isPresent()) {
+        Optional<Student> studentOpt = studentRepository.findById(id);
+        if (!studentOpt.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        studentRepository.delete(student.get());
+        Student student = studentOpt.get();
+        studentRepository.delete(student);
         return ResponseEntity.ok(id);
     }
 
@@ -89,7 +90,7 @@ public class Api {
         Student student = studentOpt.get();
         if (student.getGrades() == null) student.setGrades(new ArrayList<>());
 
-        grade.setStudentId(student.getId());
+        grade.setStudent(student);
         student.getGrades().add(grade);
         return ResponseEntity.ok(studentRepository.save(student));
     }

@@ -19,8 +19,9 @@ public class Student {
     @Column(name = "el_pastas")
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "studentas_id")
+    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JoinColumn(name = "studentas_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "student")
     private List<Grade> grades;
 
     public Integer getId() {

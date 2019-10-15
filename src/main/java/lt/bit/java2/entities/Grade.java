@@ -1,5 +1,7 @@
 package lt.bit.java2.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,8 +12,10 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "studentas_id")
-    private Integer studentId;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "studentas_id")
+    private Student student;
 
     @Column(name = "data")
     private LocalDate date;
@@ -27,12 +31,12 @@ public class Grade {
         this.id = id;
     }
 
-    public Integer getStudentId() {
-        return studentId;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public LocalDate getDate() {
