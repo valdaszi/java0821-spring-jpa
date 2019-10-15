@@ -12,3 +12,29 @@ Content-Type: application/json
 {"firstName":"A","lastName":"B","email":"a@b.com"}
 
 ###
+
+PUT http://localhost:8080/api
+Content-Type: application/json
+
+{
+  "id": 8,
+  "firstName":"A1",
+  "lastName":"B1",
+  "email":"a1@b.com"
+}
+
+###
+
+DELETE http://localhost:8080/api/8
+
+###
+
+POST http://localhost:8080/api/8
+Content-Type: application/json
+
+{
+  "date": "2019-01-31",
+  "grade": 8
+}
+
+###

@@ -10,8 +10,8 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @Column(name = "studentas_id")
-//    private Integer studentId;
+    @Column(name = "studentas_id")
+    private Integer studentId;
 
     @Column(name = "data")
     private LocalDate date;
@@ -25,6 +25,14 @@ public class Grade {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
     public LocalDate getDate() {
